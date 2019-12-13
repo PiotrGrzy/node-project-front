@@ -76,7 +76,7 @@ const onFormSubmit = e => {
   const city = document.querySelector("#place").value;
   const price = document.querySelector("#price").value * 1;
   const area = document.querySelector("#area").value * 1;
-  const photo = document.querySelector("#photo").files[0].name;
+  const photo = document.querySelector("#photo").files[0];
   const description = document.querySelector("#description").value;
   const contact = document.querySelector("#contact").value;
   const rooms = document.querySelector("#rooms").value;
