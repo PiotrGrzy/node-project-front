@@ -1,8 +1,37 @@
 var searchSelect = new Selectal("#search__select");
 
 const results = document.querySelector(".results__list");
+const queryForm = document.querySelector(".search");
 
 let html = "";
+
+const createQuery = e => {
+  e.preventDefault();
+  console.log("Wyszukuje po...");
+  const name = document.querySelector("#title").value;
+  const city = document.querySelector("#place").value;
+  const priceFrom = document.querySelector("#min-price").value;
+  const priceTo = document.querySelector("#max-price").value;
+  const areaFrom = document.querySelector("#min-area").value;
+  const areaTo = document.querySelector("#max-area").value;
+  const roomsFrom = document.querySelector("#min-rooms").value;
+  const roomsTo = document.querySelector("#max-rooms").value;
+
+  const queryObj = {
+    name: name ? `name=${name}` : null,
+    city: city ? `city=${city}` : null,
+    priceFrom: priceFrom ? `price[gte]=${priceFrom}` : null,
+    priceTo: priceTo ? `price[lte]=${priceTo}` : null,
+    areaFrom: areaFrom ? `area[gte]=${areaFrom}` : null,
+    areaTo: areaTo ? `area[lte]=${areaTo}` : null,
+    roomsFrom: roomsFrom ? `rooms[gte]=${roomsFrom}` : null,
+    roomsTo: roomsTo ? `rooms[lte]=${roomsTo}` : null
+  };
+
+  const query = `?name=${queryObj.name}&city=${queryObj.city}&price[lte]=${queryObj.priceTo}&price[gte]=${queryObj.priceFrom}&area[lte]=${queryObj.areaTo}&area[gte]=${queryObj.areaFrom}&rooms[lte]=${queryObj.roomsTo}&rooms[gte]=${queryObj.roomsFrom}`;
+  console.log(query);
+  return query;
+};
 
 const showEstates = list => {
   console.log(list);
@@ -68,3 +97,5 @@ const getEstates = async () => {
 };
 
 getEstates();
+
+queryForm.addEventListener("submit", createQuery);

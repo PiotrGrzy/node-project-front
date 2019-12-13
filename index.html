@@ -28,34 +28,33 @@
             </a>
         </div>
     </header>
-    <form class="search" autocomplete="off">
+    <form class="search">
         <div class="search__title">
             <label class="search__label tbs2" for="title">Nazwa</label>
-            <input id="title" class="search__title-input tbs1" name="title" type="text" autocomplete="off"
+            <input id="title" class="search__title-input tbs1" name="title" type="text"
                 placeholder="Wpisz szukaną nazwę...">
         </div>
         <div class="search__city">
             <label class="search__label tbs2" for="place">Miasto</label>
-            <input id="place" class="search__city-input tbs1" name="place" type="text" autocomplete="off"
-                placeholder="Wpisz miasto...">
+            <input id="place" class="search__city-input tbs1" name="place" type="text" placeholder="Wpisz miasto...">
         </div>
         <div class="search__type">
             <span class="search__label tbs2">Rodzaj nieruchomości</span>
             <div class="search__type-inputs">
                 <div class="pretty p-default p-curve p-thick p-smooth">
-                    <input type="checkbox" />
+                    <input type="checkbox" value="dom" />
                     <div class="state trs1">
                         <label class="search__type-label">Dom</label>
                     </div>
                 </div>
                 <div class="pretty p-default p-curve p-thick p-smooth">
-                    <input type="checkbox" />
+                    <input type="checkbox" value="mieszkanie" />
                     <div class="state trs1">
                         <label class="search__type-label">Mieszkanie</label>
                     </div>
                 </div>
                 <div class="pretty p-default p-curve p-thick p-smooth">
-                    <input type="checkbox" />
+                    <input type="checkbox" value="pokój" />
                     <div class="state trs1">
                         <label class="search__type-label">Pokój</label>
                     </div>
@@ -67,27 +66,27 @@
             <span class="search__label tbs2">Cena</span>
             <div class="search__price-inputs">
                 <input id="min-price" class="search__price-input tbs1" name="min-price" type="text" size="10"
-                    autocomplete="off" placeholder="Od...">
+                    placeholder="Od...">
                 <input id="max-price" class="search__price-input tbs1" name="max-price" type="text" size="10"
-                    autocomplete="off" placeholder="Do...">
+                    placeholder="Do...">
             </div>
         </div>
         <div class="search__area">
             <span class="search__label tbs2">Powierzchnia</span>
             <div class="search__area-inputs">
                 <input id="min-area" class="search__area-input tbs1" name="min-area" type="text" size="10"
-                    autocomplete="off" placeholder="Od...">
+                    placeholder="Od...">
                 <input id="max-area" class="search__area-input tbs1" name="max-area" type="text" size="10"
-                    autocomplete="off" placeholder="Do...">
+                    placeholder="Do...">
             </div>
         </div>
         <div class="search__rooms">
             <span class="search__label tbs2">Pokoje</span>
             <div class="search__rooms-inputs">
                 <input id="min-rooms" class="search__rooms-input tbs1" name="min-rooms" type="text" size="5"
-                    autocomplete="off" placeholder="Od...">
+                    placeholder="Od...">
                 <input id="max-rooms" class="search__rooms-input tbs1" name="max-rooms" type="text" size="5"
-                    autocomplete="off" placeholder="Do...">
+                    placeholder="Do...">
             </div>
         </div>
         <div class="search__additional">
@@ -117,7 +116,7 @@
             </select>
         </div>
         <div class="search__button">
-            <button class="search__btn tbs1" type="button">Szukaj</button>
+            <button class="search__btn tbs1" type="submit">Szukaj</button>
         </div>
     </form>
     <ul class="results__list">
