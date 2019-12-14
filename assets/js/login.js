@@ -43,6 +43,8 @@ const sendLoginReq = async (email, password) => {
       localStorage.setItem("token", token);
       alert("Jesteś zalogowany");
       location.replace("../../index.html");
+    } else {
+      alert("Coś poszło nie tak, spróbuj ponownie");
     }
   });
 

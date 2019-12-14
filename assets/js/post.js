@@ -8,9 +8,9 @@ const sendNewEstateReq = async (
   photo,
   description,
   contact,
-  rooms
+  rooms,
+  type
 ) => {
-  const type = "mieszkanie";
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
 
@@ -39,33 +39,20 @@ const sendNewEstateReq = async (
   data.append("userName", user.name);
   data.append("userID", user._id);
 
-  //   var data = JSON.stringify({
-  //     name: title,
-  //     area: area,
-  //     price: price,
-  //     type: type,
-  //     city: city,
-  //     photo: photo,
-  //     rooms: rooms,
-  //     description: description,
-  //     contact: contact,
-  //     userName: user.name,
-  //     userID: user._id
-  //   });
-
   var xhr = new XMLHttpRequest();
-  // xhr.withCredentials = true;
 
   xhr.addEventListener("readystatechange", function() {
     if (this.readyState === 4) {
       console.log(JSON.parse(this.responseText));
+      alert("Dodałeś nowe ogłoszenie!");
+      location.replace("../../index.html");
+    } else {
+      alert("Coś poszło nie tak, sprawdź formularz i spróbuj ponownie");
     }
   });
 
   xhr.open("POST", "http://node-api-estates.herokuapp.com/api/v1/estates");
   xhr.setRequestHeader("authorization", `Bearer ${token}`);
-  // xhr.setRequestHeader("cache-control", "no-cache");
-  // xhr.setRequestHeader("postman-token", "f15cb0ca-92a7-c23d-b5e4-7ded6f6d294d");
 
   xhr.send(data);
 };
@@ -80,7 +67,7 @@ const onFormSubmit = e => {
   const description = document.querySelector("#description").value;
   const contact = document.querySelector("#contact").value;
   const rooms = document.querySelector("#rooms").value;
-
+  const type = document.querySelector("input:checked").value;
   sendNewEstateReq(
     title,
     city,
@@ -89,7 +76,8 @@ const onFormSubmit = e => {
     photo,
     description,
     contact,
-    rooms
+    rooms,
+    type
   );
 };
 
