@@ -8,7 +8,8 @@ $Dom-triada-4-hex: #5c88bd;
 $Dom-triada-5-hex: #587aa3;
 
 /* Font */
-$font-family: "Quicksand", sans-serif;
+$font-family: "Quicksand",
+sans-serif;
 
 /* Other */
 $width: 70vw;
@@ -26,6 +27,14 @@ $width: 70vw;
   font-family: $font-family;
   letter-spacing: 0.05rem;
   font-size: 1rem;
+}
+
+@mixin header-link {
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 @mixin element {
@@ -132,12 +141,29 @@ html {
   display: flex;
   height: 10vh;
   justify-content: center;
+  align-items: center;
 
   &__inner {
+    height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: $width;
     padding: 1rem;
+  }
+
+  &__home-link {
+    @include header-link;
+    flex: 1 1 50%;
+    justify-content: flex-start;
+  }
+
+  &__post-link {
+    @include header-link;
+  }
+
+  &__signin-link {
+    @include header-link;
+    padding-left: 2rem;
   }
 
   &__logo {

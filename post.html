@@ -8,6 +8,7 @@
     <title>Dodaj nowe ogłoszenie</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap&subset=latin-ext">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="./assets/css/pretty-checkbox.css">
     <link rel="stylesheet" href="./assets/css/post.css">
@@ -56,11 +57,6 @@
                 </div>
 
             </div>
-
-            <div class="post__photo">
-                <span class="post__label tbs2">Dodaj zdjęcie:</span>
-                <input id="photo" class="post__price-input tbs1" name="photo" type="file">
-            </div>
             <div class="post__price">
                 <span class="post__label tbs2">Cena</span>
                 <input id="price" class="post__price-input tbs1" name="min-price" type="text" size="10" placeholder="">
@@ -73,16 +69,29 @@
                 <span class="post__label tbs2">Pokoje</span>
                 <input id="rooms" class="post__rooms-input tbs1" name="min-rooms" type="text" size="5" placeholder=".">
             </div>
+            <div class="post__contact">
+                <span class="post__label tbs2">Numer telefonu</span>
+                <input id="contact" class="post__contact-input tbs1" type="text" placeholder="">
+            </div>
+            <!-- <div class="post__photo">
+                <span class="post__label tbs2">Dodaj zdjęcie</span>
+                <input id="photo" class="post__photo-input tbs1" name="photo" type="file">
+            </div> -->
+
+            <div class="post__photo">
+                <span class="post__label tbs2">Zdjęcie</span>
+                <label for="file-upload" class="post__photo-label trs1">
+                    <i class="post__photo-icon material-icons">cloud_upload</i>
+                    <span class="post__photo-text">Dodaj zdjęcie</span>
+                </label>
+                <input id="file-upload" class="post__photo-input" type="file" />
+            </div>
+
         </div>
         <div class="post__description">
-            <span class="post__label tbs2">Opis nieruchomości:</span>
-            <textarea class="tbs1" id="description" rows="10" cols="50"></textarea>
+            <span class="post__label tbs2">Opis</span>
+            <textarea id="description" class="post__textarea tr" cols="num" rows="num"></textarea>
         </div>
-        <div class="post__contact">
-            <span class="post__label tbs2">Dane kontaktowe</span>
-            <input id="contact" class="post__price-input tbs1" type="text" placeholder="">
-        </div>
-
         <div class="post__button">
             <button class="post__btn tbs1" type="submit">Dodaj</button>
         </div>
