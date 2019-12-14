@@ -5,9 +5,7 @@ const queryForm = document.querySelector(".search");
 
 let html = "";
 
-const createQuery = e => {
-  e.preventDefault();
-  console.log("Wyszukuje po...");
+const createQuery = () => {
   const name = document.querySelector("#title").value;
   const city = document.querySelector("#place").value;
   const priceFrom = document.querySelector("#min-price").value;
@@ -16,6 +14,7 @@ const createQuery = e => {
   const areaTo = document.querySelector("#max-area").value;
   const roomsFrom = document.querySelector("#min-rooms").value;
   const roomsTo = document.querySelector("#max-rooms").value;
+  const sorting = document.querySelector("#search__select").value;
 
   const queryObj = {
     name: name ? `name=${name}` : null,
@@ -25,16 +24,20 @@ const createQuery = e => {
     areaFrom: areaFrom ? `area[gte]=${areaFrom}` : null,
     areaTo: areaTo ? `area[lte]=${areaTo}` : null,
     roomsFrom: roomsFrom ? `rooms[gte]=${roomsFrom}` : null,
-    roomsTo: roomsTo ? `rooms[lte]=${roomsTo}` : null
+    roomsTo: roomsTo ? `rooms[lte]=${roomsTo}` : null,
+    sorting: sorting ? `sort=${sorting}` : null
   };
 
-  const query = `?name=${queryObj.name}&city=${queryObj.city}&price[lte]=${queryObj.priceTo}&price[gte]=${queryObj.priceFrom}&area[lte]=${queryObj.areaTo}&area[gte]=${queryObj.areaFrom}&rooms[lte]=${queryObj.roomsTo}&rooms[gte]=${queryObj.roomsFrom}`;
+  let query = "?";
+  for (item in queryObj) {
+    if (queryObj[item]) query += queryObj[item] + "&";
+  }
+
   console.log(query);
   return query;
 };
 
 const showEstates = list => {
-  console.log(list);
   if (!list.length > 1) {
     return "<li>Niestety nie znaleziono wyników o wybranych kryteriach</li>";
   } else {
@@ -83,10 +86,16 @@ const showEstates = list => {
   }
 };
 
-const getEstates = async () => {
+const onSearchFormSubmit = e => {
+  e.preventDefault();
+  const query = createQuery();
+  getEstates(query);
+};
+
+const getEstates = async (query = "") => {
   try {
     const response = await fetch(
-      "http://node-api-estates.herokuapp.com/api/v1/estates"
+      `http://node-api-estates.herokuapp.com/api/v1/estates${query}`
     );
     const data = await response.json();
     console.log(data.data.estates);
@@ -98,4 +107,4 @@ const getEstates = async () => {
 
 getEstates();
 
-queryForm.addEventListener("submit", createQuery);
+queryForm.addEventListener("submit", onSearchFormSubmit);
