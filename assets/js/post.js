@@ -59,11 +59,19 @@ const sendNewEstateReq = async (
 
 const onFormSubmit = e => {
   e.preventDefault();
+  const checkForFile = () => {
+    if (document.querySelector("#photo")) {
+      return document.querySelector("#photo").files[0];
+    } else {
+      return null;
+    }
+  };
+
   const title = document.querySelector("#title").value;
   const city = document.querySelector("#place").value;
   const price = document.querySelector("#price").value * 1;
   const area = document.querySelector("#area").value * 1;
-  const photo = document.querySelector("#photo").files[0];
+  const photo = checkForFile();
   const description = document.querySelector("#description").value;
   const contact = document.querySelector("#contact").value;
   const rooms = document.querySelector("#rooms").value;
