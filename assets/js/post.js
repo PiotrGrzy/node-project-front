@@ -26,13 +26,13 @@ const sendNewEstateReq = async (
     user,
     contact
   );
-  var data = new FormData();
+  const data = new FormData();
   data.append("name", title);
   data.append("area", area);
   data.append("price", price);
   data.append("type", type);
   data.append("city", city);
-  data.append("photo", photo);
+  data.append("mainImage", photo);
   data.append("rooms", rooms);
   data.append("description", description);
   data.append("contact", contact);
@@ -62,19 +62,11 @@ const sendNewEstateReq = async (
 
 const onFormSubmit = e => {
   e.preventDefault();
-  const checkForFile = () => {
-    if (document.querySelector("#file-upload")) {
-      return document.querySelector("#file-upload").files[0];
-    } else {
-      return null;
-    }
-  };
-
   const title = document.querySelector("#title").value;
   const city = document.querySelector("#place").value;
   const price = document.querySelector("#price").value * 1;
   const area = document.querySelector("#area").value * 1;
-  const photo = checkForFile();
+  const photo = document.querySelector("#photo-link").value;
   const description = document.querySelector("#description").value;
   const contact = document.querySelector("#contact").value;
   const rooms = document.querySelector("#rooms").value;

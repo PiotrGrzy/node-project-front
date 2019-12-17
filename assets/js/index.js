@@ -45,9 +45,7 @@ const showEstates = list => {
       .map(
         estate => `<li class="results__item" data-id=${estate._id}>
         <div class="results__img">
-            <img src='http://node-api-estates.herokuapp.com/${
-              estate.mainImage
-            }'>
+            <img src='${estate.mainImage}'>
         </div>
         <div class="results__info">
             <div class="results__info-title">
@@ -88,7 +86,7 @@ const showEstates = list => {
 
 const showSingleEstate = estate => {
   html = ` <div class="results__img">
-<img src='http://node-api-estates.herokuapp.com/${estate.mainImage}'>
+<img src='${estate.mainImage}'>
 </div>
 <div class="results__info">
 <div class="results__info-title">
