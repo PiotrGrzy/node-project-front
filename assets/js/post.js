@@ -39,29 +39,32 @@ const sendNewEstateReq = async (
   data.append("userName", user.name);
   data.append("userID", user._id);
 
-  var xhr = new XMLHttpRequest();
+  try {
+    const response = await axios({
+      method: "post",
+      url: "http://node-api-estates.herokuapp.com/api/v1/estates",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`
+      },
+      data: data
+    });
 
-  xhr.addEventListener("readystatechange", function() {
-    if (this.readyState === 4) {
-      console.log(JSON.parse(this.responseText));
-      alert("Dodałeś nowe ogłoszenie!");
-      location.replace("../../index.html");
-    } else {
-      alert("Coś poszło nie tak, sprawdź formularz i spróbuj ponownie");
-    }
-  });
+    alert("Dodano ogłoszenie");
+    location.replace("../../index.html");
 
-  xhr.open("POST", "http://node-api-estates.herokuapp.com/api/v1/estates");
-  xhr.setRequestHeader("authorization", `Bearer ${token}`);
-
-  xhr.send(data);
+    console.log(response);
+  } catch (err) {
+    console.log(err);
+    alert("Coś poszło nie tak, spróbuj ponownie");
+  }
 };
 
 const onFormSubmit = e => {
   e.preventDefault();
   const checkForFile = () => {
-    if (document.querySelector("#photo")) {
-      return document.querySelector("#photo").files[0];
+    if (document.querySelector("#file-upload")) {
+      return document.querySelector("#file-upload").files[0];
     } else {
       return null;
     }
