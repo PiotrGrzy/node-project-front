@@ -1,145 +1,182 @@
 <!DOCTYPE html>
 <html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Ogłoszenia</title>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap&subset=latin-ext"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		/>
+		<link rel="stylesheet" href="./assets/css/normalize.css" />
+		<link rel="stylesheet" href="./assets/css/pretty-checkbox.css" />
+		<link rel="stylesheet" href="./assets/css/selectal.min.css" />
+		<link rel="stylesheet" href="./assets/css/main.css" />
+		<script src="./assets/js/selectal.min.js" defer></script>
+		<script src="./dist/main.js" defer></script>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogłoszenia</title>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap&subset=latin-ext">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="./assets/css/normalize.css">
-    <link rel="stylesheet" href="./assets/css/pretty-checkbox.css">
-    <link rel="stylesheet" href="./assets/css/selectal.min.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <script src="./assets/js/selectal.min.js" defer></script>
-    <script src="./dist/main.js" defer></script>
-</head>
+	<body>
+		<div class="modal">
+			<div class="modal__inner">
+				<h3 class="modal__text"></h3>
+				<button class="modal__btn">Kontynuuj</button>
+			</div>
+		</div>
+		<header class="header">
+			<div class="header__inner">
+				<a class="header__home-link" href="./index.html">
+					<img class="header__logo" src="./assets/img/logo.svg" />
+				</a>
+				<span class="header__myEstates-link">
+					<button id="my-estates" class="header__btn tbs1" type="button">
+						Moje ogłoszenia
+					</button>
+				</span>
+				<a class="header__post-link" href="./post.html">
+					<button id="post-new" class="header__btn tbs1" type="button">
+						Dodaj ogłoszenie
+					</button>
+				</a>
+				<a class="header__signin-link" href="./signin.html">
+					<button id="login-btn" class="header__btn tbs1" type="button">
+						Zaloguj się
+					</button>
+				</a>
+				<a class="header__signout-link" href="./index.html">
+					<button id="logout-btn" class="header__btn tbs1" type="button">
+						Wyloguj się
+					</button>
+				</a>
+			</div>
+		</header>
+		<form class="search">
+			<div class="search__title">
+				<label class="search__label tbs2" for="title">Nazwa</label>
+				<input
+					id="title"
+					class="search__title-input tbs1"
+					name="title"
+					type="text"
+					placeholder="Wpisz szukaną nazwę..."
+				/>
+			</div>
+			<div class="search__city">
+				<label class="search__label tbs2" for="place">Miasto</label>
+				<input
+					id="place"
+					class="search__city-input tbs1"
+					name="place"
+					type="text"
+					placeholder="Wpisz miasto..."
+				/>
+			</div>
+			<div class="search__type">
+				<span class="search__label tbs2">Rodzaj nieruchomości</span>
+				<div class="search__type-inputs">
+					<div class="pretty p-default p-curve p-thick p-smooth">
+						<input type="checkbox" value="dom" />
+						<div class="state trs1">
+							<label class="search__type-label">Dom</label>
+						</div>
+					</div>
+					<div class="pretty p-default p-curve p-thick p-smooth">
+						<input type="checkbox" value="mieszkanie" />
+						<div class="state trs1">
+							<label class="search__type-label">Mieszkanie</label>
+						</div>
+					</div>
+					<div class="pretty p-default p-curve p-thick p-smooth">
+						<input type="checkbox" value="pokój" />
+						<div class="state trs1">
+							<label class="search__type-label">Pokój</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="search__price">
+				<span class="search__label tbs2">Cena</span>
+				<div class="search__price-inputs">
+					<input
+						id="min-price"
+						class="search__price-input tbs1"
+						name="min-price"
+						type="text"
+						size="10"
+						placeholder="Od..."
+					/>
+					<input
+						id="max-price"
+						class="search__price-input tbs1"
+						name="max-price"
+						type="text"
+						size="10"
+						placeholder="Do..."
+					/>
+				</div>
+			</div>
+			<div class="search__area">
+				<span class="search__label tbs2">Powierzchnia</span>
+				<div class="search__area-inputs">
+					<input
+						id="min-area"
+						class="search__area-input tbs1"
+						name="min-area"
+						type="text"
+						size="10"
+						placeholder="Od..."
+					/>
+					<input
+						id="max-area"
+						class="search__area-input tbs1"
+						name="max-area"
+						type="text"
+						size="10"
+						placeholder="Do..."
+					/>
+				</div>
+			</div>
+			<div class="search__rooms">
+				<span class="search__label tbs2">Pokoje</span>
+				<div class="search__rooms-inputs">
+					<input
+						id="min-rooms"
+						class="search__rooms-input tbs1"
+						name="min-rooms"
+						type="text"
+						size="5"
+						placeholder="Od..."
+					/>
+					<input
+						id="max-rooms"
+						class="search__rooms-input tbs1"
+						name="max-rooms"
+						type="text"
+						size="5"
+						placeholder="Do..."
+					/>
+				</div>
+			</div>
+			<div class="search__sort">
+				<span class="search__label tbs2">Sortowanie</span>
+				<select id="search__select">
+					<option value="price">Cena&nbsp;rosnąca</option>
+					<option value="-price">Cena&nbsp;malejąco</option>
+					<option value="area">Powierzchnia&nbsp;rosnąco</option>
+					<option value="-area">Powierzchnia&nbsp;malejąco</option>
+				</select>
+			</div>
+			<div class="search__button">
+				<button class="search__btn tbs1" type="submit">Szukaj</button>
+			</div>
+		</form>
+		<ul class="results__list"></ul>
 
-<body>
-    <div class="modal">
-        <div class="modal__inner">
-            <h3 class="modal__text"></h3>
-            <button class="modal__btn">Kontynuuj</button>
-        </div>
-    </div>
-    <header class="header">
-        <div class="header__inner">
-            <a class="header__home-link" href="./index.html">
-                <img class="header__logo" src="./assets/img/logo.svg">
-            </a>
-            <span class="header__myEstates-link">
-                <button id="my-estates" class="header__btn tbs1" type="button">Moje ogłoszenia</button>
-            </span>
-            <a class="header__post-link" href="./post.html">
-                <button id="post-new" class="header__btn tbs1" type="button">Dodaj ogłoszenie</button>
-            </a>
-            <a class="header__signin-link" href="./signin.html">
-                <button id="login-btn" class="header__btn tbs1" type="button">Zaloguj się</button>
-            </a>
-            <a class="header__signout-link" href="./index.html">
-                <button id="logout-btn" class="header__btn tbs1" type="button">Wyloguj</button>
-            </a>
-        </div>
-    </header>
-    <form class="search">
-        <div class="search__title">
-            <label class="search__label tbs2" for="title">Nazwa</label>
-            <input id="title" class="search__title-input tbs1" name="title" type="text"
-                placeholder="Wpisz szukaną nazwę...">
-        </div>
-        <div class="search__city">
-            <label class="search__label tbs2" for="place">Miasto</label>
-            <input id="place" class="search__city-input tbs1" name="place" type="text" placeholder="Wpisz miasto...">
-        </div>
-        <div class="search__type">
-            <span class="search__label tbs2">Rodzaj nieruchomości</span>
-            <div class="search__type-inputs">
-                <div class="pretty p-default p-curve p-thick p-smooth">
-                    <input type="checkbox" value="dom" />
-                    <div class="state trs1">
-                        <label class="search__type-label">Dom</label>
-                    </div>
-                </div>
-                <div class="pretty p-default p-curve p-thick p-smooth">
-                    <input type="checkbox" value="mieszkanie" />
-                    <div class="state trs1">
-                        <label class="search__type-label">Mieszkanie</label>
-                    </div>
-                </div>
-                <div class="pretty p-default p-curve p-thick p-smooth">
-                    <input type="checkbox" value="pokój" />
-                    <div class="state trs1">
-                        <label class="search__type-label">Pokój</label>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="search__price">
-            <span class="search__label tbs2">Cena</span>
-            <div class="search__price-inputs">
-                <input id="min-price" class="search__price-input tbs1" name="min-price" type="text" size="10"
-                    placeholder="Od...">
-                <input id="max-price" class="search__price-input tbs1" name="max-price" type="text" size="10"
-                    placeholder="Do...">
-            </div>
-        </div>
-        <div class="search__area">
-            <span class="search__label tbs2">Powierzchnia</span>
-            <div class="search__area-inputs">
-                <input id="min-area" class="search__area-input tbs1" name="min-area" type="text" size="10"
-                    placeholder="Od...">
-                <input id="max-area" class="search__area-input tbs1" name="max-area" type="text" size="10"
-                    placeholder="Do...">
-            </div>
-        </div>
-        <div class="search__rooms">
-            <span class="search__label tbs2">Pokoje</span>
-            <div class="search__rooms-inputs">
-                <input id="min-rooms" class="search__rooms-input tbs1" name="min-rooms" type="text" size="5"
-                    placeholder="Od...">
-                <input id="max-rooms" class="search__rooms-input tbs1" name="max-rooms" type="text" size="5"
-                    placeholder="Do...">
-            </div>
-        </div>
-        <!-- <div class="search__additional">
-            <span class="search__label tbs2">Ogłoszenie musi zawierać</span>
-            <div class="search__additional-inputs">
-                <div class="pretty p-default p-curve p-thick p-smooth">
-                    <input type="checkbox" />
-                    <div class="state trs1">
-                        <label class="search__additional-label">Opis</label>
-                    </div>
-                </div>
-                <div class="pretty p-default p-curve p-thick p-smooth">
-                    <input type="checkbox" />
-                    <div class="state trs1">
-                        <label class="search__additional-label">Zdjęcia</label>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <div class="search__sort">
-            <span class="search__label tbs2">Sortowanie</span>
-            <select id="search__select">
-                <option value="price">Cena&nbsp;rosnąca</option>
-                <option value="-price">Cena&nbsp;malejąco</option>
-                <option value="area">Powierzchnia&nbsp;rosnąco</option>
-                <option value="-area">Powierzchnia&nbsp;malejąco</option>
-
-            </select>
-        </div>
-        <div class="search__button">
-            <button class="search__btn tbs1" type="submit">Szukaj</button>
-        </div>
-    </form>
-    <ul class="results__list">
-
-    </ul>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-</body>
-
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+	</body>
 </html>
