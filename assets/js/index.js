@@ -8,7 +8,6 @@ import showDetailedInfo from "./modules/showDetailedInfo";
 const results = document.querySelector(".results__list");
 const queryForm = document.querySelector(".search");
 
-let html = "";
 let estate = {};
 let estateDetails;
 
@@ -27,7 +26,6 @@ const onListClick = e => {
   if (estate) {
     const ID = estate.dataset.id;
     getSingleEstate(ID);
-
     if (estateDetails === undefined) {
       estateDetails = document.createElement("li");
       estateDetails.classList.add("results__details", "tr");
