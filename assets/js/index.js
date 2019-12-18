@@ -63,6 +63,7 @@ const onListClick = e => {
     return;
   }
   if (estate) {
+    const ID = estate.dataset.id;
     getSingleEstate(ID);
     if (estateDetails === undefined) {
       estateDetails = document.createElement("li");

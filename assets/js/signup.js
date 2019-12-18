@@ -1,8 +1,8 @@
+import showModal from "./modules/showModal";
+
 const form = document.querySelector(".sign-up__form");
 
 const sendNewUser = async (name, email, password) => {
-  console.log(name, email, password);
-
   const data = JSON.stringify({
     name: name,
     email: email,
@@ -22,13 +22,10 @@ const sendNewUser = async (name, email, password) => {
     const token = response.data.token;
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("token", token);
-    alert("Dodano nowego użytkownika");
-    location.replace("../../index.html");
-
-    console.log(response);
+    showModal("Dodano nowego użytkownika");
   } catch (err) {
     console.log(err);
-    alert("Coś poszło nie tak, spróbuj ponownie");
+    showModal("Coś poszło nie tak :(", "negative");
   }
 };
 

@@ -1,3 +1,5 @@
+import showModal from "./modules/showModal";
+
 const form = document.querySelector("#newEstateForm");
 
 const sendNewEstateReq = async (
@@ -50,13 +52,11 @@ const sendNewEstateReq = async (
       data: data
     });
 
-    alert("Dodano ogłoszenie");
-    location.replace("../../index.html");
-
+    showModal("Dodano ogłoszenie");
     console.log(response);
   } catch (err) {
     console.log(err);
-    alert("Coś poszło nie tak, spróbuj ponownie");
+    showModal("Coś poszło nie tak, spróbuj ponownie", "negative");
   }
 };
 

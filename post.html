@@ -15,6 +15,12 @@
 </head>
 
 <body>
+    <div class="modal">
+        <div class="modal__inner">
+            <h3 class="modal__text"></h3>
+            <button class="modal__btn">Kontynuuj</button>
+        </div>
+    </div>
     <header class="header">
         <div class="header__inner">
             <a class="header__home-link" href="index.html">
@@ -26,12 +32,13 @@
         <div class="post__info">
             <div class="post__title">
                 <label class="post__label tbs2" for="title">Nazwa</label>
-                <input id="title" class="post__title-input tbs1" name="title" type="text"
+                <input required id="title" class="post__title-input tbs1" name="title" type="text"
                     placeholder="Wpisz nazwę ogłoszenia...">
             </div>
             <div class="post__city">
                 <label class="post__label tbs2" for="place">Miasto</label>
-                <input id="place" class="post__city-input tbs1" name="place" type="text" placeholder="Wpisz miasto...">
+                <input required id="place" class="post__city-input tbs1" name="place" type="text"
+                    placeholder="Wpisz miasto...">
             </div>
             <div class="post__type">
                 <span class="post__label tbs2">Rodzaj nieruchomości</span>
@@ -59,19 +66,22 @@
             </div>
             <div class="post__price">
                 <span class="post__label tbs2">Cena</span>
-                <input id="price" class="post__price-input tbs1" name="min-price" type="text" size="10" placeholder="">
+                <input required id="price" class="post__price-input tbs1" name="min-price" type="text" size="10"
+                    placeholder="">
             </div>
             <div class="post__area">
                 <span class="post__label tbs2">Powierzchnia</span>
-                <input id="area" class="post__area-input tbs1" name="min-area" type="text" size="10" placeholder="">
+                <input required id="area" class="post__area-input tbs1" name="min-area" type="text" size="10"
+                    placeholder="">
             </div>
             <div class="post__rooms">
                 <span class="post__label tbs2">Pokoje</span>
-                <input id="rooms" class="post__rooms-input tbs1" name="min-rooms" type="text" size="5" placeholder=".">
+                <input required id="rooms" class="post__rooms-input tbs1" name="min-rooms" type="text" size="5"
+                    placeholder=".">
             </div>
             <div class="post__contact">
                 <span class="post__label tbs2">Numer telefonu</span>
-                <input id="contact" class="post__contact-input tbs1" type="text" placeholder="">
+                <input required id="contact" class="post__contact-input tbs1" type="text" placeholder="">
             </div>
             <!-- <div class="post__photo">
                 <span class="post__label tbs2">Dodaj zdjęcie</span>
@@ -97,7 +107,7 @@
         </div>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-    <script src="assets/js/post.js"></script>
+    <script src="dist/post.js"></script>
 </body>
 
 </html>

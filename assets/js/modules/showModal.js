@@ -5,16 +5,20 @@ const modalBtn = document.querySelector(".modal__btn");
 const showModal = (text, type = null) => {
   modal.style.display = "flex";
   modalText.textContent = text;
+
   if (type === "negative") {
-    modalText.style.color = "red";
+    modalText.style.color = "#d15353";
+    modalBtn.dataset.type = "negative";
   } else {
-    modalText.style.color = "#fffff";
+    modalText.style.color = "#ffffff";
   }
 };
 
 const hideModal = () => {
-  console.log(location);
-  location.replace("../../../index.html");
+  if (modalBtn.dataset.type === "negative") {
+    return (modal.style.display = "none");
+  }
+  location.replace("../index.html");
   modal.style.display = "none";
 };
 

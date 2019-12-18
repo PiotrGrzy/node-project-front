@@ -1,27 +1,6 @@
-//import showModal from "./modules/showModal";
+import showModal from "./modules/showModal";
 
 const form = document.querySelector(".sign-in__form");
-
-const modal = document.querySelector(".modal");
-const modalText = document.querySelector(".modal__text");
-const modalBtn = document.querySelector(".modal__btn");
-
-const showModal = (text, type = null) => {
-  modal.style.display = "flex";
-  modalText.textContent = text;
-  if (type === "negative") {
-    modalText.style.color = "red";
-  } else {
-    modalText.style.color = "#fffff";
-  }
-};
-
-const hideModal = () => {
-  modal.style.display = "none";
-  location.replace("../../index.html");
-};
-
-modalBtn.addEventListener("click", hideModal);
 
 const sendLoginReq = async (email, password) => {
   const data = JSON.stringify({
