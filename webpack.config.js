@@ -5,7 +5,8 @@ module.exports = {
     main: ["@babel/polyfill", "./assets/js/index.js"],
     post: ["@babel/polyfill", "./assets/js/post.js"],
     login: ["@babel/polyfill", "./assets/js/login.js"],
-    signup: ["@babel/polyfill", "./assets/js/signup.js"]
+    signup: ["@babel/polyfill", "./assets/js/signup.js"],
+    update: ["@babel/polyfill", "./assets/js/update.js"]
   },
 
   output: {

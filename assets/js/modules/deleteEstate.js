@@ -1,7 +1,7 @@
 const deleteEstate = async id => {
   const token = localStorage.getItem("token");
   try {
-    confirm("Czy na pewno chcesz usunąć to ogłoszenie?");
+    if (!confirm("Czy na pewno chcesz usunąć to ogłoszenie?")) return;
     const response = await axios({
       method: "delete",
       url: `http://node-api-estates.herokuapp.com/api/v1/estates/${id}`,

@@ -1,5 +1,5 @@
 import "@babel/polyfill";
-var searchSelect = new Selectal("#search__select");
+//var searchSelect = new Selectal("#search__select");
 
 import createQuery from "./modules/createQuery";
 import showEstates from "./modules/showEstates";
@@ -40,7 +40,7 @@ const showMyEstates = () => {
 logoutBtn.addEventListener("click", logout);
 myEstates.addEventListener("click", showMyEstates);
 
-let estate = {};
+//let estate = {};
 let estateDetails;
 
 const onSearchFormSubmit = e => {
@@ -53,15 +53,19 @@ const insertAfterNode = (referenceNode, newNode) => {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 };
 
-const onListClick = e => {
+const onListClick = async e => {
   const estate = e.target.closest("li");
-  if (e.target.type === "submit") {
+  const ID = estate.dataset.id;
+  if (e.target.className === "results__delete-btn") {
     if (estate) {
-      const ID = estate.dataset.id;
-      deleteEstate(ID);
+      return deleteEstate(ID);
     }
-    return;
+  } else if (e.target.className === "results__update-btn") {
+    const estateToUpdate = await getSingleEstate(ID);
+    localStorage.setItem("estate", JSON.stringify(estateToUpdate));
+    return location.replace("../update.html");
   }
+
   if (estate) {
     const ID = estate.dataset.id;
     getSingleEstate(ID);
@@ -94,8 +98,9 @@ const getSingleEstate = async id => {
       `http://node-api-estates.herokuapp.com/api/v1/estates/${id}`
     );
     const data = await response.json();
-    estate = { ...data.data.estate };
+    const estate = { ...data.data.estate };
     showDetailedInfo(estate, estateDetails);
+    return estate;
   } catch (err) {
     console.log(err);
   }
