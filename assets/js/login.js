@@ -41,13 +41,14 @@ const sendLoginReq = async (email, password) => {
     const token = response.data.token;
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("token", token);
-    //alert("Jesteś zalogowany");
-    showModal("Jesteś zalogowany");
+    localStorage.setItem("logOn", true);
+
+    showModal("Zostałeś pomyślnie zalogowany");
 
     console.log(response);
   } catch (err) {
     console.log(err);
-    alert("Coś poszło nie tak, spróbuj ponownie");
+    showModal("Podałeś niewłaściwe hasło lub login", "negative");
   }
 };
 

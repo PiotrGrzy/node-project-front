@@ -1,10 +1,11 @@
 const results = document.querySelector(".results__list");
 
 const showEstates = list => {
-  if (!list.length > 1) {
-    return "<li>Niestety nie znaleziono wyników o wybranych kryteriach</li>";
+  let html = "";
+  console.log(list.length);
+  if (list.length < 1) {
+    html = "<li>Niestety nie znaleziono wyników o wybranych kryteriach</li>";
   } else {
-    let html = "";
     html = list
       .map(
         estate => `<li class="results__item" data-id=${estate._id}>
@@ -46,8 +47,8 @@ const showEstates = list => {
       </li>`
       )
       .join(" ");
-    results.innerHTML = html;
   }
+  results.innerHTML = html;
 };
 
 export default showEstates;

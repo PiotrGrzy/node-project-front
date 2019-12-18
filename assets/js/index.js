@@ -7,6 +7,35 @@ import showDetailedInfo from "./modules/showDetailedInfo";
 
 const results = document.querySelector(".results__list");
 const queryForm = document.querySelector(".search");
+const loginBtn = document.querySelector("#login-btn");
+const logoutBtn = document.querySelector("#logout-btn");
+const postNew = document.querySelector("#post-new");
+const myEstates = document.querySelector("#my-estates");
+
+const logOn = localStorage.getItem("logOn");
+
+const user = JSON.parse(localStorage.getItem("user"));
+
+const logout = () => {
+  localStorage.clear();
+  location.reload();
+};
+
+if (logOn) {
+  postNew.style.display = "inline-block";
+  logoutBtn.style.display = "inline-block";
+  myEstates.style.display = "inline-block";
+} else {
+  loginBtn.style.display = "inline-block";
+}
+
+const showMyEstates = () => {
+  const query = `?userID=${user._id}`;
+  getEstates();
+};
+
+logoutBtn.addEventListener("click", logout);
+myEstates.addEventListener("click", showMyEstates);
 
 let estate = {};
 let estateDetails;
@@ -56,7 +85,7 @@ const getSingleEstate = async id => {
     );
     const data = await response.json();
     estate = { ...data.data.estate };
-    showDetailedInfo(estate);
+    showDetailedInfo(estate, estateDetails);
   } catch (err) {
     console.log(err);
   }

@@ -1,4 +1,4 @@
-const showDetailedInfo = estate => {
+const showDetailedInfo = (estate, estateDetails) => {
   if (estateDetails !== undefined) {
     const descrContent = document.createElement("p");
     descrContent.classList.add("results__descr-content");

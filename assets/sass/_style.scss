@@ -156,13 +156,19 @@ html {
     justify-content: flex-start;
   }
 
-  &__post-link {
-    @include header-link;
+  &__post-link button,
+  &__signin-link button,
+  &__signout-link button,
+  &__myEstates-link button {
+    display: none;
   }
 
-  &__signin-link {
+  &__signin-link,
+  &__signout-link,
+  &__myEstates-link,
+  &__post-link {
     @include header-link;
-    padding-left: 2rem;
+    padding-left: 1rem;
   }
 
   &__logo {
@@ -484,4 +490,8 @@ html {
     background-color: $Dom-triada-2-hex;
     color: $Dom-triada-5-hex;
   }
+}
+
+.dropdown-btn:hover .settings {
+  display: block;
 }
