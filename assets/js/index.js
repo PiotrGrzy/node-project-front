@@ -4,6 +4,7 @@ var searchSelect = new Selectal("#search__select");
 import createQuery from "./modules/createQuery";
 import showEstates from "./modules/showEstates";
 import showDetailedInfo from "./modules/showDetailedInfo";
+import deleteEstate from "./modules/deleteEstate";
 
 const results = document.querySelector(".results__list");
 const queryForm = document.querySelector(".search");
@@ -30,8 +31,10 @@ if (logOn) {
 }
 
 const showMyEstates = () => {
+  console.log("klik");
   const query = `?userID=${user._id}`;
-  getEstates();
+  console.log(query);
+  getEstates(query, true);
 };
 
 logoutBtn.addEventListener("click", logout);
@@ -52,8 +55,14 @@ const insertAfterNode = (referenceNode, newNode) => {
 
 const onListClick = e => {
   const estate = e.target.closest("li");
+  if (e.target.type === "submit") {
+    if (estate) {
+      const ID = estate.dataset.id;
+      deleteEstate(ID);
+    }
+    return;
+  }
   if (estate) {
-    const ID = estate.dataset.id;
     getSingleEstate(ID);
     if (estateDetails === undefined) {
       estateDetails = document.createElement("li");
@@ -66,13 +75,13 @@ const onListClick = e => {
   }
 };
 
-const getEstates = async (query = "") => {
+const getEstates = async (query = "", enableUpdate = false) => {
   try {
     const response = await fetch(
       `http://node-api-estates.herokuapp.com/api/v1/estates${query}`
     );
     const data = await response.json();
-    showEstates(data.data.estates);
+    showEstates(data.data.estates, enableUpdate);
   } catch (err) {
     console.log(err);
   }

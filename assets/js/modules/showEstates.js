@@ -1,8 +1,7 @@
 const results = document.querySelector(".results__list");
 
-const showEstates = list => {
+const showEstates = (list, enableUpdate) => {
   let html = "";
-  console.log(list.length);
   if (list.length < 1) {
     html = "<li>Niestety nie znaleziono wyników o wybranych kryteriach</li>";
   } else {
@@ -43,6 +42,13 @@ const showEstates = list => {
               <span class="results__price-value tbl1">${
                 estate.price
               }&nbsp;zł</span>
+           ${
+             enableUpdate
+               ? `<button id="update-btn" class="results__update-btn" >Edytuj</button>
+           <button id="delete-btn" class="results__delete-btn"'>Usuń</button>`
+               : ""
+           }
+            
           </div>
       </li>`
       )
