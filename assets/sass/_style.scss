@@ -491,21 +491,18 @@ html {
 
   &__update-btn,
   &__delete-btn {
-    padding: 5px;
-    display: block;
-    color: inherit;
-    font-weight: inherit;
-    font-family: inherit;
-    border: 3px solid $Dom-triada-5-hex;
-    border-radius: 5px;
-    transition: all 0.2s;
-    cursor: pointer;
-    margin: 10px 0;
-  }
+    @include input;
+    margin: 0.75rem 0;
+    color: $Dom-triada-4-hex;
+    border-color: $Dom-triada-4-hex;
+    font-weight: 700;
+    font-size: 0.875rem;
+    background-color: white;
+    width: 80%;
 
-  &__update-btn:hover,
-  &__delete-btn:hover {
-    color: #ffff;
-    background-color: $Dom-triada-5-hex;
+    &:hover {
+      background-color: $Dom-triada-4-hex;
+      color: white;
+    }
   }
 }
